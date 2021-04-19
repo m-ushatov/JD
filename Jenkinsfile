@@ -12,7 +12,8 @@ pipeline {
 	stage("create docker image") {
             steps {
                 echo " ============== start building image =================="
-                sh 'make build '
+                sh 'apt -y install make'
+		sh 'make build '
                   }
                                      }
 
