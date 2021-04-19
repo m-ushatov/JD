@@ -1,5 +1,9 @@
-FROM alpine
-RUN apk add --no-cache curl wget busybox-extras netcat-openbsd python py-pip
-RUN pip install awscli
-RUN apk --purge -v del py-pip
-CMD tail -f /dev/null
+FROM ubuntu:20.04
+
+RUN apt -y update
+RUN apt -y install apache2
+
+RUN echo 'Hello from Docker' > /var/www/html/index.html
+
+CMD ["/usr/sbin/apache2ctl", "-DFOREGROUND"]
+EXPOSE 80
