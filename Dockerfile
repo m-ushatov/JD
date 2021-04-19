@@ -1,7 +1,7 @@
 FROM ubuntu
 
 RUN apt -y update
-RUN apt -y -2 install apache2
+RUN apt -y install apache
 
 RUN echo 'Hello from Docker' > /var/www/html/index.html
 
