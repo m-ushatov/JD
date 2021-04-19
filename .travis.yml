@@ -1,0 +1,14 @@
+sudo: required
+
+services:
+  - docker
+
+script:
+  - make release
+
+after_success:
+  - docker images
+  - if [ "$TRAVIS_BRANCH" == "master" ]; then
+      echo $DOCKER_PASSWORD | docker login --username $DOCKER_USERNAME --password-stdin;
+      docker push $DOCKER_USERNAME/python3-flask-alpine;
+    fi
