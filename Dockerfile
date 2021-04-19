@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM ubuntu
 
 RUN apt -y update
 RUN apt -y install apache2
