@@ -20,8 +20,8 @@ pipeline {
 	    steps {
 		echo "================run build======================"
 		sh 'docker images'
-		sh 'docker run -d -p 5000:5000 jd'
-		sh 'docker ps -a'
+		sh 'docker run --restart unless-stopped -d -p 5000:5000 jd'
+		sh 'docker ps'
 	          }
                      }
 	    }
