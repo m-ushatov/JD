@@ -9,6 +9,12 @@ pipeline {
         timestamps()
             }
     stages {
+	stage("connecting") {
+	    steps {
+		echo "================connecting to DockerVM=================="
+		sh 'ssh docker@192.168.0.105'
+		  }
+			    }
 	stage("create docker image") {
             steps {
                 echo " ============== start building image =================="
