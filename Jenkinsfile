@@ -12,7 +12,7 @@ pipeline {
 	stage("create docker image") {
             steps {
                 echo " ============== start building image =================="
-                sh 'apt -y install make'
+                sh 'apk add g++ && apk add make'
 		sh 'make build '
                   }
                                      }
