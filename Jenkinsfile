@@ -11,10 +11,10 @@ pipeline {
 	    steps {
 		echo "================connecting to DockerVM=================="
 		sh '''
-                       ssh docker@192.168.0.105 docker build -t jd .
-                       ssh docker@192.168.0.105 docker images
-                       ssh docker@192.168.0.105 docker run --restart unless-stopped -d -p 5000:5000 jd
-                       ssh docker@192.168.0.105 docker ps
+                       ssh docker@192.168.43.57 docker build -t jd .
+                       ssh docker@192.168.43.57 docker images
+                       ssh docker@192.168.43.57 docker run --restart unless-stopped -d -p 5000:5000 jd
+                       ssh docker@192.168.43.57 docker ps
                '''
 		  }
 			    }
