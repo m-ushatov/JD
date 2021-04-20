@@ -21,7 +21,7 @@ pipeline {
 		echo "================run build======================"
 		sh 'docker images'
 		sh 'docker run -d -p 5000:5000 jd'
-		sh 'docker ps'
+		sh 'docker ps -a'
 	          }
                      }
 	    }
