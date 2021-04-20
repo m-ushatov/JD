@@ -12,15 +12,14 @@ pipeline {
 	stage("create docker image") {
             steps {
                 echo " ============== start building image =================="
-                sh 'apk add g++ && apk add make'
-		sh 'make build '
+                sh 'docker build -t jd .'
                   }
                                      }
 
 	stage("run") {
 	    steps {
 		echo "================run build======================"
-		sh 'make run'
+		sh 'docker run -d -p 5000:5000 jd'
 	          }
                      }
 	    }
