@@ -2,7 +2,7 @@ properties([disableConcurrentBuilds()])
 
 pipeline {
     agent {
-	label 'docker'
+	label 'docker && jid'
 	  }
     options {
         buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
