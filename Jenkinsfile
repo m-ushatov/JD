@@ -12,7 +12,12 @@ pipeline {
 	stage("killing") {
             steps {
                 echo " ============== killing old container =================="
-                sh 'docker kill docker_flask'
+                sh """
+			if [ docker ps | wc -l == 1 ]
+  				then
+   	 			docker kill docker_flask
+			fi
+		"""
 		sh 'docker rm docker_flask'
 		sh 'docker rmi jd'
                   }
