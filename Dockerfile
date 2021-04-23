@@ -1,8 +1,8 @@
 FROM python:3-alpine
 LABEL maintainer="Eugene Letenkov <eugene@letenkov.ru>"
 
-ENV IMAGE_NAME=jd\
-    CONTAINER_NAME=docker_flask
+#ENV IMAGE_NAME=jd\
+#    CONTAINER_NAME=docker_flask
 
 ARG BUILD_DATE
 ARG VCS_REF

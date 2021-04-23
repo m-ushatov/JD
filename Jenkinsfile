@@ -4,6 +4,10 @@ pipeline {
     agent {
 	label 'docker||jid'
 	  }
+    environment {
+        CONTAINER_NAME = 'docker_flask'
+        IMAGE_NAME = 'jd'
+    		}
     options {
         buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
         timestamps()
