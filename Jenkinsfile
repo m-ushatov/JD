@@ -9,6 +9,12 @@ pipeline {
         timestamps()
             }
     stages {
+	stage("killing") {
+            steps {
+                echo " ============== killing old container =================="
+                sh 'docker kill docker_flask'
+                  }
+                          }
 	stage("create docker image") {
             steps {
                 echo " ============== start building image =================="
