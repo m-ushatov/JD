@@ -13,13 +13,12 @@ pipeline {
             steps {
                 echo " ============== killing old container =================="
                 sh """
-			if [ docker ps | wc -l == 1 ]
-  				then
-   	 			docker kill docker_flask
-			fi
+			docker ps
+			docker images
+   			docker kill docker_flask
+			docker rm docker_flask
+			docker rmi jd
 		"""
-		sh 'docker rm docker_flask'
-		sh 'docker rmi jd'
                   }
                           }
 	stage("create docker image") {
