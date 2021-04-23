@@ -13,7 +13,7 @@ pipeline {
         timestamps()
             }
     stages {
-	stage("killing") {
+	stage("killing old container") {
             steps {
                 echo " ============== killing old container =================="
                 sh 'docker ps -q --filter "name=${CONTAINER_NAME}" | grep -q . && docker stop ${CONTAINER_NAME} && docker rm ${CONTAINER_NAME} && docker rmi ${IMAGE_NAME}'
