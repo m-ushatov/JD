@@ -12,9 +12,7 @@ pipeline {
 	stage("killing") {
             steps {
                 echo " ============== killing old container =================="
-                sh """
-			docker ps -q --filter 'name=${CONTAINER_NAME}' | grep -q . && docker stop ${CONTAINER_NAME} && docker rm ${CONTAINER_NAME} && docker rmi \$(docker images -a)
-		"""
+                sh 'docker ps -q --filter 'name=${CONTAINER_NAME}' | grep -q . && docker stop ${CONTAINER_NAME} && docker rm ${CONTAINER_NAME} && docker rmi \$(docker images -a)'
                   }
                           }
 	stage("create docker image") {
