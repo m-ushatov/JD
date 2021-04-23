@@ -13,6 +13,8 @@ pipeline {
             steps {
                 echo " ============== killing old container =================="
                 sh 'docker kill docker_flask'
+		sh 'docker rm docker_flask'
+		sh 'docker rmi jd'
                   }
                           }
 	stage("create docker image") {
