@@ -16,7 +16,7 @@ pipeline {
 	stage("killing old container") {
             steps {
                 echo " ============== killing old container =================="
-                sh 'docker ps -q --filter "name=${CONTAINER_NAME}" | grep -q . && docker stop ${CONTAINER_NAME} && docker rm ${CONTAINER_NAME} && docker rmi \$(docker images -a)'
+                sh '''docker ps -q --filter "name=${CONTAINER_NAME}" | grep -q . && docker stop ${CONTAINER_NAME} && docker rm ${CONTAINER_NAME} && docker rmi \$(docker images -a)'''
                   }
                           }
 	stage("create docker image") {
@@ -28,9 +28,11 @@ pipeline {
 	stage("run") {
 	    steps {
 		echo "================run build======================"
-		sh 'docker images'
-		sh 'docker run --name ${CONTAINER_NAME} --restart unless-stopped -d -p 5000:5000 ${IMAGE_NAME}'
-		sh 'docker ps -a'
+		sh '''
+			docker images
+			docker run --name ${CONTAINER_NAME} --restart unless-stopped -d -p 5000:5000 ${IMAGE_NAME}'
+			docker ps -a
+		   '''
 	          }
                      }
 	    }
