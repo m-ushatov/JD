@@ -30,7 +30,7 @@ pipeline {
 		echo "================run build======================"
 		sh '''
 			docker images
-			docker run --name ${CONTAINER_NAME} --restart unless-stopped -d -p 5000:5000 ${IMAGE_NAME}'
+			docker run --name ${CONTAINER_NAME} --restart unless-stopped -d -p 5000:5000 ${IMAGE_NAME}
 			docker ps -a
 		   '''
 	          }
