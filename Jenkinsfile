@@ -9,6 +9,12 @@ pipeline {
         timestamps()
             }
     stages {
+	stage("stopping") {
+            steps {
+                echo " ============== stopping old container =================="
+                sh 'docker kill docker_flask'
+                  }
+                                     }
 	stage("create docker image") {
             steps {
                 echo " ============== start building image =================="
@@ -19,7 +25,7 @@ pipeline {
 	    steps {
 		echo "================run build======================"
 		sh 'docker images'
-		sh 'docker run --restart unless-stopped -d -p 5000:5000 jd'
+		sh 'docker run --name docker_flask --restart unless-stopped -d -p 5000:5000 jd'
 		sh 'docker ps -a'
 	          }
                      }
