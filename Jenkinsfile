@@ -13,25 +13,21 @@ pipeline {
             steps {
                 echo " ============== killing old container =================="
                 sh """
-			docker ps
-			docker images
-   			docker kill docker_flask
-			docker rm docker_flask
-			docker rmi jd
+			docker ps -q --filter 'name=${CONTAINER_NAME}' | grep -q . && docker stop ${CONTAINER_NAME} && docker rm ${CONTAINER_NAME} && docker rmi \$(docker images -a)
 		"""
                   }
                           }
 	stage("create docker image") {
             steps {
                 echo " ============== start building image =================="
-                sh 'docker build -t jd .'
+                sh 'docker build -t ${IMAGE_NAME} .'
                   }
                                      }
 	stage("run") {
 	    steps {
 		echo "================run build======================"
 		sh 'docker images'
-		sh 'docker run --name docker_flask --restart unless-stopped -d -p 5000:5000 jd'
+		sh 'docker run --name ${CONTAINER_NAME} --restart unless-stopped -d -p 5000:5000 ${IMAGE_NAME}'
 		sh 'docker ps -a'
 	          }
                      }
