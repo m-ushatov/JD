@@ -33,6 +33,7 @@ pipeline {
 			docker run --name ${CONTAINER_NAME} --restart unless-stopped -d -p 5000:5000 ${IMAGE_NAME}
 			docker ps -a
 		   '''
+		echo "==================YPA========================""
 	          }
                      }
 	    }
