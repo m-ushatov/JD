@@ -16,7 +16,7 @@ pipeline {
 	stage("killing old container") {
             steps {
                 echo " ============== killing old container =================="
-                sh '''docker stop ${CONTAINER_NAME} || true && docker rm ${CONTAINER_NAME} || true && docker rmi ${IMAGE_NAME} || true'''
+                sh '''docker kill ${CONTAINER_NAME} || true && docker rm ${CONTAINER_NAME} || true && docker rmi ${IMAGE_NAME} || true'''
                   }
                           }
 	stage("create docker image") {
