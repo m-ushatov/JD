@@ -1,4 +1,5 @@
 properties([disableConcurrentBuilds()])
+
 pipeline {
     agent {
 	label 'docker||jid'
