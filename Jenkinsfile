@@ -34,6 +34,7 @@ pipeline {
 			docker ps -a
 		   '''
 		echo "==================YPA!========================"
+        echo "VSC"
 	          }
                      }
 	    }
